@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!--babel相关-->
+	<!--<script src="./b/browser.js"></script>-->
+	<!--<script src="node_modules/babel-core/browser.js"></script>-->
+	<!--<script type="text/babel">
+	class Test {
+	test() {
+		return "test";
+	}
+	}
+	
+	var test = new Test;
+	test.test(); // "test"
+	</script>-->
+</head>
+<body>
+	<button>1</button>
+	<button>2</button>
+	<button>3</button>
+	<button>4</button>
+	<div id="output"></div>	
+	<script>
+		var buttons = document.querySelectorAll("button");
+		var output = document.querySelector("#output");
+
+		for(var i=0; i<buttons.length; i++) {
+			// method1
+			buttons[i].addEventListener("click", (function(i) {
+				return function() {
+					console.log(i);
+					output.innerText = buttons[i].innerText;
+				}
+			})(i))
+			
+			// method2
+			// buttons[i].onclick = (function(j) {
+			// 	return function() {
+			// 		console.log(j);					
+			// 	}
+			// })(i)
+		}
+		
+		// method3
+		// var _loop = function (i) {
+		// 	buttons[i].addEventListener('click', function () {
+		// 		output.innerText = buttons[i].innerText
+		// 	})
+		// 	}
+			
+		// for (var i = 0; i < buttons.length; i++) {
+		// 	_loop(i)
+		// }
+	</script>
+</body>
+</html>
