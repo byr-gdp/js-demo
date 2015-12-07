@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://www.promisejs.org/polyfills/promise-6.1.0.js"></script>
+</head>
+<body>
+	<script>
+		function getURL(URL) {
+			return new Promise(function (resolve, reject) {
+				var req = new XMLHttpRequest();
+				req.open('GET', URL, true);
+				req.onload = function () {
+					if (req.status === 200) {
+						resolve(req.responseText);
+					} else {
+						reject(new Error(req.statusText));
+					}
+				};
+				req.onerror = function () {
+					reject(new Error(req.statusText));
+				};
+				req.send();
+			});
+		}
+		// 运行示例
+		// var URL = "http://httpbin.org/get";
+		var URL = "http://httpbin.org/status/500"
+		getURL(URL).then(function onFulfilled(value){
+			console.log(value);
+		}).catch(function onRejected(error){
+			console.error(error);
+		});
+	</script>
+</body>
+</html>
