@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CORS-IMG</title>
+</head>
+<body>
+  <script>
+  var img = new Image();
+  img.onload = img.onerror = function() {
+    alert('done');
+  }
+  img.src = 'https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png'
+  </script>
+</body>
+</html>

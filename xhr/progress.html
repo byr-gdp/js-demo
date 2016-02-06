@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>XHR</title>
+</head>
+<body>
+  <div id="status"></div>
+  <script>
+    // var divStatus = document.getElementById('status');
+    var xhr = new XMLHttpRequest();
+    // var url = 'icon.png';
+    var url = 'test.jpg';
+    xhr.open('get', url, true);
+    xhr.setRequestHeader('Origins', 'http://www.baidu.com');
+    xhr.onprogress = function(event) {
+      if(event.lengthComputable) {
+        var divStatus = document.getElementById('status');
+        console.log('if');
+        // divStatus.innerText = 'Received ' + event.position + 'of ' + event.totalSize + ' bytes.';
+        divStatus.innerText = (event.position/event.totalSize*100).toFixed(0) + '%';
+      } else {
+        console.log('else');
+      }
+    }
+    xhr.send(null);
+  </script>
+</body>
+</html>
