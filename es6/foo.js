@@ -1,3 +1,7 @@
-const s = "sb"
+const foo = 'bar'
 
-s = "bs"
+console.log(foo)
+
+foo = 'newvalue'
+
+console.log(foo)
