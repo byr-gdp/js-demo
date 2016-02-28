@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>dimension</title>
+</head>
+<body>
+  <script>
+  // 数组降维的几种方法
+  var s = [[1, 2], [3, 4], [5, 6]];
+  var result1 = [],
+      result2 = [],
+      result3 = [],
+      result4 = [];
+
+  for(var i = 0; i < s.length; i++) {
+    for(var j = 0; j < s[i].length; j++) {
+      result1.push(s[i][j]);
+    }
+  }
+  console.log('result1 = ' + result1);
+
+  for(var i = 0; i < s.length; i++) {
+    result2 = result2.concat(s[i]);
+  }
+  console.log('result2 = ' + result2);
+
+  result3 = Array.prototype.concat(s);
+  console.log('result3 = ' + result3);
+
+  result4 = Array.prototype.concat.apply([], s);
+  console.log('result4 = ' + result4);
+
+  </script>
+</body>
+</html>
