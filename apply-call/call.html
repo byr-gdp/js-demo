@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 验证当 apply/call 第一个参数为 null/undefined 时当前的执行环境是 window/global
+    function fun() {
+      alert(this);
+    }
+
+    // fun.call(1);
+    // fun.call('a');
+    // fun.call(undefined);
+    // fun.call(null);
+
+    fun.apply(1);
+    fun.apply('a');
+    fun.apply(undefined);
+    fun.apply(null);
+  </script>
+</body>
+</html>
