@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div id="message"></div>
+  <script>
+    var msg = document.getElementById('message');
+
+    var xhr = new XMLHttpRequest();
+    var url = './helloworld.txt'
+    xhr.open('get', url, true);
+    xhr.onload = function() {
+      if(xhr.status === 200) {
+        msg.innerText = xhr.responseText;
+      } else {
+        console.log('Error: ' + xhr.status);
+      }
+    }
+    xhr.send();
+  </script>
+</body>
+</html>

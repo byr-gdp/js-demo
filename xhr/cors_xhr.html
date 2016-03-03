@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CORS</title>
+</head>
+<body>
+  <div id="status"></div>
+  <script>
+  var xhr = new XMLHttpRequest();
+  var url = 'http://smartisian.club:5000/topten';
+  xhr.open('get', url, true);
+  // xhr.setRequestHeader('origin', 'http://www.baidu.comj');
+
+  // xhr.onreadystatechange = function() {
+  //   if(xhr.readyState == 4) {
+  //     if((xhr.status >= 200 && xhr.status < 300) || xhr.status ==304) {
+  //       alert(xhr.responseText);
+  //     } else {
+  //       alert('wrong: ' + xhr.status);
+  //     }
+  //   }
+  // }
+
+  xhr.onload = function() {
+    if(xhr.status === 200) {
+      alert('done');
+      console.log(xhr.responseText);
+    }
+  }
+
+  xhr.send();
+  </script>
+</body>
+</html>

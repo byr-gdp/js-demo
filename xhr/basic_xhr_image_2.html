@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div id="progress"></div>
+  <div id="pic"></div>
+  <script>
+    // 通过 XHR 发出 GET 请求获取图片
+    // 目前的问题是如何将图片插入 DOM
+    var progress = document.getElementById('progress');
+    var pic      = document.getElementById('pic');
+
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+      alert('done');
+      // TODO: 如何插入图片
+      pic.appendChild(xhr.result);
+    }
+
+    xhr.onprogress = function(event) {
+      if(event.lengthComputable) {
+        progress.innerText = 'Received ' + event.position + ' of ' + event.totalSize + ' bytes.';
+        console.log(event.position);
+      } else {
+        console.log('Error: ');
+      }
+    }
+
+    xhr.open('get', './test.jpg', true);
+    xhr.send();
+  </script>
+</body>
+</html>

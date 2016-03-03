@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div id="progress"></div>
+  <div id="pic"></div>
+  <script>
+    // 通过创建 Image 来动态载入图片，且可以成功插入 DOM
+    var progress = document.getElementById('progress');
+    var pic      = document.getElementById('pic');
+
+    var image = new Image();
+    image.onload = function() {
+      alert('done')
+      pic.appendChild(this);
+    }
+
+    // Image 没有 progress 事件
+    image.onprogress = function(event) {
+      if(event.lengthComputable) {
+        progress.innerText = 'Received ' + event.position + ' of ' + event.totalSize + ' bytes.';
+        console.log(event.position);
+      } else {
+        console.log('Error: ');
+      }
+    }
+
+    image.src = './test.jpg';
+  </script>
+</body>
+</html>
