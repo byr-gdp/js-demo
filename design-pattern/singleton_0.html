@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 透明的单例模式
+    var CreateDiv = (function() {
+      var instance;
+
+      var CreateDiv = function(html) {
+        // 以下为负责管理单例的代码
+        // 去掉以下判断即变为常规模式
+        if(instance) {
+          return instance;
+        }
+        this.html = html;
+        this.init();
+        return instance = this;
+      };
+
+      CreateDiv.prototype.init = function() {
+        var div = document.createElement('div');
+        div.innerHTML = this.html;
+        document.body.appendChild(div);
+      }
+
+      return CreateDiv;
+    })();
+
+    var a = new CreateDiv('sven1');
+    var b = new CreateDiv('sven2');
+
+    console.log(a === b);
+  </script>
+</body>
+</html>
